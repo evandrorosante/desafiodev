@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <body>
+
+        <ui:composition template="./../template.xhtml">
+
+            <ui:define name="title">Alterar Task</ui:define>
+
+            <ui:define name="content">
+                <h:form id="formTask">
+                    <p:panel header="Alterar Task">
+
+                        <h:panelGrid>
+                            <p:message for="formTask" />
+                        </h:panelGrid>
+
+                        <h:panelGrid columns="3">
+
+                            <h:outputLabel value="Título" />
+                            <h:inputText id="titulo" value="#{taskManagedBean.task.titulo}" required="true" requiredMessage="Campo de preenchimento obrigat&oacute;rio" validatorMessage="O valor fornecido para este campo n&atilde;o pode ter mais do que 255 caracteres">
+                                <f:validateLength minimum="1" maximum="255"/>
+                            </h:inputText>
+                            <p:message for="titulo"/>
+                            <h:commandButton id="alterar" action="#{taskManagedBean.alterar}" value="Alterar" />
+                            <h:commandButton id="cancelar" action="/index" value="Cancelar" immediate="true" />
+                        </h:panelGrid>
+                    </p:panel>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
