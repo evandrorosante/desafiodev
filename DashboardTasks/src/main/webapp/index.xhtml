@@ -2,19 +2,94 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
     <head>
+        <meta name="google-signin-scope" content="profile email"></meta>
+        <meta name="google-signin-client_id" content="686451250211-gk9vvlhvdbu2mr1phnlcdh50nvfphf68.apps.googleusercontent.com"></meta>
+        <script src="https://apis.google.com/js/platform.js" async ="defer" />
+        <script type="text/javascript" src="main.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
         <title>Dashboard de Tasks</title>        
-    </head>
+
+      
+
+ <style type="text/css">
+            @import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,600,700,400);
+
+            body {
+                margin: 0;
+                padding: 10%;
+                text-align: center;
+                font-family: 'Open Sans';
+                background: #F8F8F8;
+            }
+
+            .user {
+                padding: 50px 20px;
+                background: #FFFFFF;
+                border-radius: 2px;
+                box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+                width: 330px;
+                display: block;
+                margin: 0 auto;
+            }
+
+            #user-photo {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                display: block;
+                margin: 0 auto 10px auto;
+            }
+
+            h1 {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                font-weight: lighter;
+            }
+
+            #user-name {
+                color: #0066AA;
+                font-weight: bold;
+            }
+
+            #user-email {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+                color: #0066AA;
+            }
+
+            .g-signin2,
+            .g-signin2 .abcRioButton {
+                display: block;
+                margin: 20px auto 0 auto;
+                text-align: center;
+            }
+        </style>
+    </head>   
     <body>
+        <div class="user">
+            <img id="user-photo" src="resources/imagens/user-anonimo.jpg"></img>
+            <h1>Olá, <span id="user-name">visitante</span>!</h1>
+            <h4>Seja bem vindo ao Dashboard de Tasks.</h4>
+            <h5>Acesse com sua conta google.</h5>
+            <p id="user-email"></p>
+        </div>
+        <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-width="370" data-height="50" data-longtitle="true" data-lang="pt-BR" data-redirecturi="postmessage"></div>
 
-        <ui:composition template="./template.xhtml">
-
-            <ui:define name="content">
-                <h:outputText value="Bem-vindo ao Dashboard de Tasks"/>
-            </ui:define>
-
-        </ui:composition>
-
+        <script>
+            function onSignIn(response) {
+                // Recebendo o TOKEN que você usará nas demais requisições à API:
+                var LoR = response.getAuthResponse().id_token;
+                console.log("~ le Tolkien: " + LoR);
+                logado();
+            }
+            ;
+        </script>
     </body>
+
 </html>

@@ -5,7 +5,13 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
+    <head>
+        <script type="text/javascript" src="main.js"></script>
+        <script src="http://code.jquery.com/jquery.js"></script>
+    </head>
+
     <body>
+
 
         <ui:composition template="./../template.xhtml">
 
@@ -39,7 +45,7 @@
                                 </p:column>
                             </p:dataTable>
 
-                            <h:commandButton id="cancelar" action="/index" value="Cancelar" />
+                            <h:commandButton id="cancelar" action="/login" value="Cancelar" />
                         </h:panelGrid>
                     </p:panel>
                 </h:form>
